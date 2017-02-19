@@ -1,0 +1,14 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+### Eclipse ###
+.settings/
+
+### Mac OSX ###
+.DS_Store
+
+/bin/
