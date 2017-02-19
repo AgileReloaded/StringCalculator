@@ -19,4 +19,9 @@ public class StringCalculatorTest {
     public void givenOneNumberShouldReturnItsValue() throws Exception {
         assertEquals(1, strc.Add("1"));
     }
+	
+	@Test
+    public void givenTwoCommaSeparatedNumbersShouldReturnTheirSum() throws Exception {
+		assertEquals(15, strc.Add("14,1"));
+    }
 }
