@@ -1,16 +1,17 @@
 package it.agilereloaded.kata.stringcalculator.main;
 
 public class StringCalculator {
+	
+	String separators = ",|\n";
 
 	public int Add(String n) {
-		String[] numbers = extractNumbersFrom(n);
-		return sumOf(numbers);
+		return sumOf(extractNumbersFrom(n));
 	}
 
 	private String[] extractNumbersFrom(String n) {
 		String[] numbers = new String[0];
 		if (n != null && !n.isEmpty()) {
-			numbers = n.split(",|\n");
+			numbers = n.split(separators);
 		}
 		return numbers;
 	}
