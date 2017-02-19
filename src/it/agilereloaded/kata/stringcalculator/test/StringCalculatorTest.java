@@ -14,4 +14,9 @@ public class StringCalculatorTest {
     public void givenEmptyStringShouldReturnZero() throws Exception {
         assertEquals(0, strc.Add(""));
     }
+	
+	@Test
+    public void givenOneNumberShouldReturnItsValue() throws Exception {
+        assertEquals(1, strc.Add("1"));
+    }
 }
