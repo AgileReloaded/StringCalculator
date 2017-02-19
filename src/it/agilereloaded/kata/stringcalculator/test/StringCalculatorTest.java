@@ -24,4 +24,9 @@ public class StringCalculatorTest {
     public void givenTwoCommaSeparatedNumbersShouldReturnTheirSum() throws Exception {
 		assertEquals(15, strc.Add("14,1"));
     }
+	
+	@Test
+    public void givenCommaSeparatedNumbersShouldReturnTheirSum() throws Exception {
+		assertEquals(7, strc.Add("4,1,2"));
+    }
 }
