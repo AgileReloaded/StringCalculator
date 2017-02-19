@@ -10,7 +10,7 @@ public class StringCalculator {
 	private String[] extractNumbersFrom(String n) {
 		String[] numbers = new String[0];
 		if (n != null && !n.isEmpty()) {
-			numbers = n.split(",");
+			numbers = n.split(",|\n");
 		}
 		return numbers;
 	}

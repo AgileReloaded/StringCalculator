@@ -29,4 +29,9 @@ public class StringCalculatorTest {
     public void givenCommaSeparatedNumbersShouldReturnTheirSum() throws Exception {
 		assertEquals(7, strc.Add("4,1,2"));
     }
+	
+	@Test
+    public void givenNewLineSeparatedNumbersShouldReturnTheirSum() throws Exception {
+		assertEquals(13, strc.Add("10\n1\n2"));
+    }
 }
