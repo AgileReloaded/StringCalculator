@@ -43,5 +43,10 @@ public class StringCalculatorTest {
     public void givenMixedNewLineAndCommaSeparatedNumbersShouldReturnTheirSum() throws Exception {
 		assertSum(13, "10\n1,2");
     }
+	
+	@Test
+    public void allowCustomSeparatorDefinitionInTheFirstLineOfInput() throws Exception {
+		assertSum(17, "//;\n7;4;6");
+    }
 
 }

@@ -11,6 +11,11 @@ public class StringCalculator {
 	private String[] extractNumbersFrom(String n) {
 		String[] numbers = new String[0];
 		if (n != null && !n.isEmpty()) {
+			if (n.startsWith("//"))
+			{
+				separators += '|' + n.substring(2,3);
+				n = n.substring(4);
+			}
 			numbers = n.split(separators);
 		}
 		return numbers;
