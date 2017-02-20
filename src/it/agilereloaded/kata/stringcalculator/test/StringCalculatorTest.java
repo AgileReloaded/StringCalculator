@@ -8,7 +8,7 @@ import it.agilereloaded.kata.stringcalculator.main.StringCalculator;
 
 public class StringCalculatorTest {
 
-	private void assertSum(int expected, String input) {
+	private void assertSum(int expected, String input) throws IllegalArgumentException {
 		StringCalculator strc = new StringCalculator();
 		int actual = strc.Add(input);
 		assertEquals(expected, actual);
@@ -47,6 +47,11 @@ public class StringCalculatorTest {
 	@Test
     public void allowCustomSeparatorDefinitionInTheFirstLineOfInput() throws Exception {
 		assertSum(17, "//;\n7;4;6");
+    }
+	
+	@Test(expected = IllegalArgumentException.class)
+    public void givenNegativeNumbersShouldThrowNegativeNumbersNotAllowedException() throws Exception {
+		new StringCalculator().Add("-4,1,-2");
     }
 
 }
