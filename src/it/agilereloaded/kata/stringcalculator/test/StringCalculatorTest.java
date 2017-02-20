@@ -8,35 +8,40 @@ import it.agilereloaded.kata.stringcalculator.main.StringCalculator;
 
 public class StringCalculatorTest {
 
-	StringCalculator strc = new StringCalculator();
+	private void assertSum(int expected, String input) {
+		StringCalculator strc = new StringCalculator();
+		int actual = strc.Add(input);
+		assertEquals(expected, actual);
+	}
 	
 	@Test
     public void givenEmptyStringShouldReturnZero() throws Exception {
-        assertEquals(0, strc.Add(""));
+		assertSum(0, "");
     }
 	
 	@Test
     public void givenOneNumberShouldReturnItsValue() throws Exception {
-        assertEquals(1, strc.Add("1"));
+		assertSum(1, "1");
     }
 	
 	@Test
     public void givenTwoCommaSeparatedNumbersShouldReturnTheirSum() throws Exception {
-		assertEquals(15, strc.Add("14,1"));
+		assertSum(15, "14,1");
     }
 	
 	@Test
     public void givenCommaSeparatedNumbersShouldReturnTheirSum() throws Exception {
-		assertEquals(7, strc.Add("4,1,2"));
+		assertSum(7, "4,1,2");
     }
 	
 	@Test
     public void givenNewLineSeparatedNumbersShouldReturnTheirSum() throws Exception {
-		assertEquals(13, strc.Add("10\n1\n2"));
+		assertSum(13, "10\n1\n2");
     }
 	
 	@Test
     public void givenMixedNewLineAndCommaSeparatedNumbersShouldReturnTheirSum() throws Exception {
-		assertEquals(13, strc.Add("10\n1,2"));
+		assertSum(13, "10\n1,2");
     }
+
 }
