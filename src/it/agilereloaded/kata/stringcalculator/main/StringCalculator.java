@@ -4,28 +4,33 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class StringCalculator {
-	
+
 	public int Add(String stringToSum) throws IllegalArgumentException {
-		String[] numbers = extractNumbersFrom(stringToSum);
+		List<Integer> numbers = extractNumbersFrom(stringToSum);
+		checkForNegativesNumber(numbers);
 		return sumOf(numbers);
 	}
 
-	private String[] extractNumbersFrom(String stringToSum) {
+	private List<Integer> extractNumbersFrom(String stringToSum) {
 		return new NumberParser().ParseNumbers(stringToSum);
 	}
 
-	private int sumOf(String[] numbers) throws IllegalArgumentException {
-		int sum = 0;
+	private void checkForNegativesNumber(List<Integer> numbers) throws IllegalArgumentException {
 		List<Integer> negativeNumbers = new LinkedList<Integer>();
-		for (String n : numbers)
-		{
-			int number = Integer.parseInt(n);
+		for (Integer number : numbers) {
 			if (number < 0)
 				negativeNumbers.add(number);
-			sum += number;
 		}
 		if (negativeNumbers.size() > 0)
-			throw new IllegalArgumentException("Negatives numbers not allowed: " + negativeNumbers.toString());
+			throw new IllegalArgumentException(negativeNumbers.toString());
+
+	}
+
+	private int sumOf(List<Integer> numbers) {
+		int sum = 0;
+		for (Integer number : numbers) {
+			sum += number;
+		}
 		return sum;
 	}
 

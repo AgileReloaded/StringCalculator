@@ -1,18 +1,27 @@
 package it.agilereloaded.kata.stringcalculator.main;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class NumberParser {
 
 	String separators = ",|\n";
 
-	public String[] ParseNumbers(String n) {
+	public List<Integer> ParseNumbers(String n) {
+		List<Integer> numbers = new LinkedList<Integer>();
+
 		if (n == null || n.isEmpty())
-			return new String[0];
+			return numbers;
 
 		if (thereAreCustomSeparator(n)) {
 			separators += addCustomSeparatorToListOfSeparators(n);
 			n = removeCustomSeparatorDefinitionFromInput(n);
 		}
-		return n.split(separators);
+
+		for (String num : n.split(separators)) {
+			numbers.add(Integer.parseInt(num));
+		}
+		return numbers;
 	}
 
 	private boolean thereAreCustomSeparator(String n) {
