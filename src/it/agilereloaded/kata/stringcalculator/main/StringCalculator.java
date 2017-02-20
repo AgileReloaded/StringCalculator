@@ -2,35 +2,13 @@ package it.agilereloaded.kata.stringcalculator.main;
 
 public class StringCalculator {
 	
-	String separators = ",|\n";
-
-	public int Add(String n) {
-		return sumOf(extractNumbersFrom(n));
+	public int Add(String stringToSum) {
+		String[] numbers = extractNumbersFrom(stringToSum);
+		return sumOf(numbers);
 	}
 
-	private String[] extractNumbersFrom(String n) {
-		String[] numbers = new String[0];
-		if (n != null && !n.isEmpty()) {
-			if (thereAreCustomSeparator(n))
-			{
-				addCustomSeparatorToListOfSeparators(n);
-				n = removeCustomSeparatorDefinitionFromInput(n);
-			}
-			numbers = n.split(separators);
-		}
-		return numbers;
-	}
-
-	private String removeCustomSeparatorDefinitionFromInput(String n) {
-		return n.substring(4);
-	}
-
-	private void addCustomSeparatorToListOfSeparators(String n) {
-		separators += '|' + n.substring(2,3);
-	}
-
-	private boolean thereAreCustomSeparator(String n) {
-		return n.startsWith("//");
+	private String[] extractNumbersFrom(String stringToSum) {
+		return new NumberParser().ParseNumbers(stringToSum);
 	}
 
 	private int sumOf(String[] numbers) {
